@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 namespace _survival_game.Inventory
 {
     public class Inventory : IInventory
-    {
+    { 
         private List<IInventorySlot> _slots;
+        public event Action InventoryStateChanged;
         public int SlotsAmount { get; }
-
-        public event Action<IInventorySlot> CreatedSlot; 
-
         public Inventory(int slotsAmount)
         {
             SlotsAmount = slotsAmount;
@@ -22,13 +19,7 @@ namespace _survival_game.Inventory
                 _slots.Add(new InventorySlot());
             }
         }
-
-        public Inventory(List<IInventorySlot> slots)
-        {
-            SlotsAmount = slots.Count;
-            _slots = slots;
-        }
-
+        
         private bool IsSameItems(IInventoryItem item1, IInventoryItem item2)
         {
             return item1.ItemInfo.Id == item2.ItemInfo.Id;
@@ -51,7 +42,7 @@ namespace _survival_game.Inventory
         }
 
         public bool TryAddItemToSlot(IInventorySlot slot, IInventoryItem item)
-        {
+        {  
             if (slot.AmountItems + item.Amount <= item.ItemInfo.MaxCountInStack)
             {
                 if (slot.IsEmpty)
@@ -62,7 +53,7 @@ namespace _survival_game.Inventory
                 {
                     slot.AddAmount(item.Amount);
                 }
-
+                InventoryStateChanged?.Invoke();
                 return true;
             }
 
@@ -77,15 +68,37 @@ namespace _survival_game.Inventory
 
         public void TransitItemInOtherSlot(IInventorySlot slotFrom, IInventorySlot slotTo)
         {
+            if (slotTo.IsFull || slotFrom.IsEmpty ||
+                (!slotTo.IsEmpty && !IsSameItems(slotTo.Item, slotFrom.Item)))
+                return;
+            
             if (slotTo.IsEmpty)
             {
-                slotTo.SetItem(slotFrom.Item.Clone());
+                slotTo.SetItem(slotFrom.Item);
                 slotFrom.Clear();
+                InventoryStateChanged?.Invoke();
+                return;
             }
+            
+            bool fits = slotFrom.AmountItems + slotTo.AmountItems <= slotFrom.Item.ItemInfo.MaxCountInStack;
+            int amountToTransit = fits ? slotFrom.AmountItems : slotFrom.Item.ItemInfo.MaxCountInStack - slotTo.AmountItems;
+            int amountLeft = slotFrom.AmountItems - amountToTransit;
+            slotTo.Item.Amount += amountToTransit;
+            
+            if(fits) slotFrom.Clear();
+            else slotFrom.Item.Amount = amountLeft;
+
+            InventoryStateChanged?.Invoke();
         }
 
         public void Remove(IInventoryItem item, int amount = 1)
         {
+            throw new NotImplementedException();
+        }
+
+        public List<IInventorySlot> GetAllSlots()
+        {
+            return _slots;
         }
     }
 }

@@ -1,23 +1,35 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace _survival_game.Inventory.InventoryUI
 {
     public class InventorySlotUI : MonoBehaviour, IDropHandler
     {
-        [SerializeField] private InventoryItemUI _itemUIPrefab;
+        [SerializeField] private InventoryItemUI _itemUI;
+        public IInventorySlot Slot { get; private set; }
+        public event Action<IInventorySlot, IInventorySlot> ItemDropped;
 
-        public void PutItem(IInventoryItem item)
+        public void SetSlot(IInventorySlot slot)
         {
-            Instantiate(_itemUIPrefab, transform).SetItem(item);
+            Slot = slot;
         }
         
         public void OnDrop(PointerEventData eventData)
         {
-            var otherItemTransform = eventData.pointerDrag.transform;
+            InventoryItemUI itemUI = eventData.pointerDrag.GetComponent<InventoryItemUI>();
+            InventorySlotUI slotFrom = itemUI.GetComponentInParent<InventorySlotUI>();
+            
+            ItemDropped?.Invoke(slotFrom.Slot, Slot);
+            
+            UpdateData();
+            slotFrom.UpdateData();
+        }
 
-            otherItemTransform.SetParent(transform);
-            otherItemTransform.localPosition = Vector3.zero;
+        public void UpdateData()
+        {
+            if (Slot != null)
+                _itemUI.SetItem(Slot);
         }
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a8781b88c1e43f0a69e602f08e82f2a, type: 3}
-  m_Name: GreenApple
+  m_Name: RedEApple
   m_EditorClassIdentifier: 
-  _id: green_apple
-  _title: Green Apple
+  _id: red_apple
+  _title: Red Apple
   _maxCountsInSlot: 100
-  _spriteIcon: {fileID: 21300000, guid: efba134df4c46fb44b97caf41bd0d465, type: 3}
+  _spriteIcon: {fileID: 21300000, guid: 0154c64c0cd74424d826d1e9a1710acf, type: 3}
