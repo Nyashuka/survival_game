@@ -1,4 +1,4 @@
-﻿using _survival_game.Inventory.Interfaces;
+﻿using _survival_game.Inventory.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,9 +13,10 @@ namespace _survival_game.Inventory.InventoryUI
         [SerializeField] private CanvasGroup textCanvasGroup;
         [SerializeField] private CanvasGroup canvasGroup;
         
-        public InventorySlotUI SlotUI { get; set; }
         private IItem _item;
         private Transform _parent;
+
+        public InventorySlotUI SlotUI { get; private set; }
 
         private void Start()
         {

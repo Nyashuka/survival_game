@@ -1,4 +1,4 @@
-﻿namespace _survival_game.Inventory.Interfaces
+﻿namespace _survival_game.Inventory.Scripts.Interfaces
 {
     public interface IInventorySlot
     {

@@ -1,7 +1,6 @@
-﻿using System;
-using _survival_game.Inventory;
-using _survival_game.Inventory.Interfaces;
+﻿using _survival_game.Inventory;
 using _survival_game.Inventory.InventoryUI;
+using _survival_game.Inventory.Scripts.Interfaces;
 using _survival_game.ScriptableObjects;
 using UnityEngine;
 
@@ -31,6 +30,5 @@ namespace _survival_game
                 _inventory.PutItemIntoSlot(item);
             }
         }
-        
     }
 }

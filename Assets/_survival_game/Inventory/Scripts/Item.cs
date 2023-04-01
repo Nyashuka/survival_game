@@ -1,4 +1,4 @@
-﻿using _survival_game.Inventory.Interfaces;
+﻿using _survival_game.Inventory.Scripts.Interfaces;
 
 namespace _survival_game.Inventory
 {

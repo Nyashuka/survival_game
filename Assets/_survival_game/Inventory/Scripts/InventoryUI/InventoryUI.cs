@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using _survival_game.Inventory.Interfaces;
+using _survival_game.Inventory.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
