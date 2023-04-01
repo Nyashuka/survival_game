@@ -6,7 +6,7 @@ namespace _survival_game.Inventory.InventoryUI
 {
     public class InventorySlotUI : MonoBehaviour, IDropHandler
     {
-        [SerializeField] private InventoryItemUI _itemUI;
+        [SerializeField] private InventoryItemUI itemUI;
         public IInventorySlot Slot { get; private set; }
         public event Action<IInventorySlot, IInventorySlot> ItemDropped;
 
@@ -17,19 +17,18 @@ namespace _survival_game.Inventory.InventoryUI
         
         public void OnDrop(PointerEventData eventData)
         {
-            InventoryItemUI itemUI = eventData.pointerDrag.GetComponent<InventoryItemUI>();
-            InventorySlotUI slotFrom = itemUI.SlotUI;
+            if (eventData.pointerDrag.TryGetComponent(out InventoryItemUI foundItemUI))
+            {
+                InventorySlotUI slotFrom = foundItemUI.SlotUI;
             
-            ItemDropped?.Invoke(slotFrom.Slot, Slot);
-            
-            /*UpdateData();
-            slotFrom.UpdateData();*/
+                ItemDropped?.Invoke(slotFrom.Slot, Slot);
+            }
         }
 
         public void UpdateData()
         {
             if (Slot != null)
-                _itemUI.SetItem(this);
+                itemUI.SetItem(this);
         }
     }
 }

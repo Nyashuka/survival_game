@@ -6,11 +6,9 @@ namespace _survival_game.Inventory
     public interface IInventory
     {
         public event Action InventoryStateChanged;
-        int SlotsAmount { get; }
-        bool TryAddItem(IInventoryItem item);
-        bool TryAddItemToSlot(IInventorySlot slot, IInventoryItem item);
+        bool TryAddItem(IItem item);
+        bool TryAddItemToSlot(IInventorySlot slot, IItem item);
         void TransitItemInOtherSlot(IInventorySlot slotFrom, IInventorySlot slotTo);
-        void Remove(IInventoryItem item, int amount = 1);
         List<IInventorySlot> GetAllSlots();
     }
 }

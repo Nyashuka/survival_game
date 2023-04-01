@@ -9,10 +9,8 @@ namespace _survival_game.Inventory
         bool IsFull { get; }
         bool IsEmpty { get; }
         int AmountItems { get; }
-        IInventoryItem Item { get; }
-        void AddAmount(int amount);
+        IItem Item { get; }
         void Clear();
-        void SetItem(IInventoryItem item);
-        public event Action<IInventoryItem> ItemAdded;
+        void SetItem(IItem item);
     }
 }

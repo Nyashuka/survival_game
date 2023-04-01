@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.74509805}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -237,11 +237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce1f7ef0aa1451baa38c36f9d0a107c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryPanel: {fileID: 413241622}
-  _inventoryGrid: {fileID: 413241621}
-  _slotPrefab: {fileID: -5175873900644561788, guid: 62e4e4cde4029844d8159a3d014b737c, type: 3}
-  _slotsRowCount: 3
-  _slotsColCount: 5
+  inventoryPanel: {fileID: 413241622}
+  inventoryGrid: {fileID: 413241621}
+  slotPrefab: {fileID: -5175873900644561788, guid: 62e4e4cde4029844d8159a3d014b737c, type: 3}
+  slotsRowCount: 4
+  slotsColCount: 5
+  padding: 15
+  spacing: 15
 --- !u!1 &534678750
 GameObject:
   m_ObjectHideFlags: 0

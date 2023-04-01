@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9930869, g: 0.7971698, b: 1, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6117647, b: 0.6117647, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -249,10 +249,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053f3ef8bad94352bd22385b6fa41f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 5859599274297493475}
-  _textAmount: {fileID: 4101664276561002092}
-  _imageCanvaseGroup: {fileID: 6304427410256976340}
-  _textCanvasGroup: {fileID: 2287737052900885332}
+  image: {fileID: 5859599274297493475}
+  textAmount: {fileID: 4101664276561002092}
+  imageCanvasGroup: {fileID: 6304427410256976340}
+  textCanvasGroup: {fileID: 2287737052900885332}
+  canvasGroup: {fileID: 8729256645638106610}
 --- !u!222 &5654786714558899458
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ GameObject:
   - component: {fileID: 5859599274297493475}
   - component: {fileID: 6304427410256976340}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

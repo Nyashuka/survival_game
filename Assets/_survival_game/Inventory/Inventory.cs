@@ -5,30 +5,24 @@ namespace _survival_game.Inventory
 {
     public class Inventory : IInventory
     { 
-        private List<IInventorySlot> _slots;
+        private readonly List<IInventorySlot> _slots;
         public event Action InventoryStateChanged;
-        public int SlotsAmount { get; }
+        
         public Inventory(int slotsAmount)
         {
-            SlotsAmount = slotsAmount;
             _slots = new List<IInventorySlot>(slotsAmount);
 
             for (int i = 0; i < slotsAmount; i++)
             {
-                IInventorySlot slot = new InventorySlot();
                 _slots.Add(new InventorySlot());
             }
         }
-        
-        private bool IsSameItems(IInventoryItem item1, IInventoryItem item2)
-        {
-            return item1.ItemInfo.Id == item2.ItemInfo.Id;
-        }
 
-        public bool TryAddItem(IInventoryItem item)
+        public bool TryAddItem(IItem item)
         {
             IInventorySlot slotWithSameItem = _slots.Find(slot => !slot.IsEmpty &&
-                                                                  IsSameItems(slot.Item, item) && !slot.IsFull);
+                                                                        slot.Item.Equals(item) && 
+                                                                        !slot.IsFull);
 
             if (slotWithSameItem != null)
                 return TryAddItemToSlot(slotWithSameItem, item);
@@ -41,7 +35,7 @@ namespace _survival_game.Inventory
             return false;
         }
 
-        public bool TryAddItemToSlot(IInventorySlot slot, IInventoryItem item)
+        public bool TryAddItemToSlot(IInventorySlot slot, IItem item)
         {  
             if (slot.AmountItems + item.Amount <= item.ItemInfo.MaxCountInStack)
             {
@@ -51,7 +45,7 @@ namespace _survival_game.Inventory
                 }
                 else
                 {
-                    slot.AddAmount(item.Amount);
+                    slot.Item.AddAmount(item.Amount);
                 }
                 InventoryStateChanged?.Invoke();
                 return true;
@@ -59,18 +53,21 @@ namespace _survival_game.Inventory
 
             int amountToAdd = item.ItemInfo.MaxCountInStack - slot.AmountItems;
             int leftItemsAmount = (slot.AmountItems + item.Amount) - item.ItemInfo.MaxCountInStack;
-
-            slot.AddAmount(amountToAdd);
-            item.Amount = leftItemsAmount;
+            
+            slot.Item.AddAmount(amountToAdd);
+            item.ChangeAmount(leftItemsAmount);
 
             return TryAddItem(item);
         }
 
         public void TransitItemInOtherSlot(IInventorySlot slotFrom, IInventorySlot slotTo)
         {
-            if (slotTo.IsFull || slotFrom.IsEmpty ||
-                (!slotTo.IsEmpty && !IsSameItems(slotTo.Item, slotFrom.Item)) ||
-                slotFrom == slotTo)
+            if (
+                slotTo.IsFull || 
+                slotFrom.IsEmpty ||
+                slotFrom == slotTo ||
+                (!slotTo.IsEmpty && !slotTo.Item.Equals(slotFrom.Item))
+               )
                 return;
             
             if (slotTo.IsEmpty)
@@ -84,18 +81,14 @@ namespace _survival_game.Inventory
             bool fits = slotFrom.AmountItems + slotTo.AmountItems <= slotFrom.Item.ItemInfo.MaxCountInStack;
             int amountToTransit = fits ? slotFrom.AmountItems : slotFrom.Item.ItemInfo.MaxCountInStack - slotTo.AmountItems;
             int amountLeft = slotFrom.AmountItems - amountToTransit;
-            slotTo.Item.Amount += amountToTransit;
+            slotTo.Item.AddAmount(amountToTransit);
             
             if(fits) slotFrom.Clear();
-            else slotFrom.Item.Amount = amountLeft;
+            else slotFrom.Item.ChangeAmount(amountLeft);
 
             InventoryStateChanged?.Invoke();
         }
 
-        public void Remove(IInventoryItem item, int amount = 1)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<IInventorySlot> GetAllSlots()
         {

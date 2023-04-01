@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _survival_game.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "InventoryItemInfo", menuName = "Gameplay/Items/Create new item info")]
-    public class Food : ScriptableObject, IInventoryItemInfo
+    public class Food : ScriptableObject, IItemInfo
     {
         [SerializeField] private string _id;
         [SerializeField] private string _title;

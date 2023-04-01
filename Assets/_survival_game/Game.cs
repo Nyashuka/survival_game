@@ -16,17 +16,17 @@ namespace _survival_game
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
-                IInventoryItem item = new InventoryItem(1, _greenApple);
+                IItem item = new Item(1, _greenApple);
                 _inventory.PutItem(item);
             }
             if (Input.GetKeyDown(KeyCode.R))
             {
-                IInventoryItem item = new InventoryItem(1, _redApple);
+                IItem item = new Item(1, _redApple);
                 _inventory.PutItem(item);
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                IInventoryItem item = new InventoryItem(1, _redApple);
+                IItem item = new Item(1, _redApple);
                 _inventory.PutItemIntoSlot(item);
             }
         }
