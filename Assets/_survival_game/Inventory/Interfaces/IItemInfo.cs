@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _survival_game.Inventory
+namespace _survival_game.Inventory.Interfaces
 {
     public interface IItemInfo
     {

@@ -1,4 +1,5 @@
 ﻿using _survival_game.Inventory;
+using _survival_game.Inventory.Interfaces;
 using UnityEngine;
 
 namespace _survival_game.ScriptableObjects

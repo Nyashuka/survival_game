@@ -1,4 +1,6 @@
-﻿namespace _survival_game.Inventory
+﻿using _survival_game.Inventory.Interfaces;
+
+namespace _survival_game.Inventory
 {
     public class Item : IItem
     {

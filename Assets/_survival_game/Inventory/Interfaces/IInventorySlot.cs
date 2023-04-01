@@ -1,8 +1,4 @@
-﻿using System;
-using _survival_game.Inventory.InventoryUI;
-using Unity.Collections;
-
-namespace _survival_game.Inventory
+﻿namespace _survival_game.Inventory.Interfaces
 {
     public interface IInventorySlot
     {

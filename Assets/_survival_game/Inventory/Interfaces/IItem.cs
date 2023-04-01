@@ -1,6 +1,6 @@
 using System;
 
-namespace _survival_game.Inventory
+namespace _survival_game.Inventory.Interfaces
 {
     public interface IItem : IEquatable<IItem>
     {

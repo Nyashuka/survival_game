@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _survival_game.Inventory.Interfaces;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using _survival_game.Inventory;
+using _survival_game.Inventory.Interfaces;
 using _survival_game.Inventory.InventoryUI;
 using _survival_game.ScriptableObjects;
 using UnityEngine;
