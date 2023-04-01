@@ -83,7 +83,7 @@ namespace _survival_game.Inventory.InventoryUI
         /*
          * !!!! All methods below are just for the test,
          * so as not to create a separate class for the test,
-         * will be removed very soon !!!!
+         * will be removed very soon once I come up with the control logic!!!!
          */
         public void PutItem(IItem item)
         {

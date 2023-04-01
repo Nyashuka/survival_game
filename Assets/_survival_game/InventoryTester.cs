@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _survival_game
 {
-    public class Game : MonoBehaviour
+    public class InventoryTester : MonoBehaviour
     {
         [SerializeField] private Food _greenApple;
         [SerializeField] private Food _redApple;
@@ -30,5 +30,6 @@ namespace _survival_game
                 _inventory.PutItemIntoSlot(item);
             }
         }
+        
     }
 }
