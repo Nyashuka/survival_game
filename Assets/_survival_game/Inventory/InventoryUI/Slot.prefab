@@ -34,7 +34,7 @@ RectTransform:
   m_Father: {fileID: 2539569086207125566}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.78}
-  m_AnchorMin: {x: 0.72, y: 0}
+  m_AnchorMin: {x: 0.55, y: 0}
   m_AnchorMax: {x: 1, y: 0.24000001}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 5859599274297493475}
+  _textAmount: {fileID: 4101664276561002092}
   _imageCanvaseGroup: {fileID: 6304427410256976340}
   _textCanvasGroup: {fileID: 2287737052900885332}
 --- !u!222 &5654786714558899458

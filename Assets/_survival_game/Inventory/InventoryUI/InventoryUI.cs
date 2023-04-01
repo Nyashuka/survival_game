@@ -48,10 +48,12 @@ namespace _survival_game.Inventory.InventoryUI
             _inventory.TryAddItem(item);
         }
         
-        public void PutItemIntoSlot(IInventorySlot slot,IInventoryItem item)
+        public void PutItemIntoSlot(IInventoryItem item)
         {
-            _inventory.TryAddItemToSlot(slot, item);
+            List<IInventorySlot> slots = _inventory.GetAllSlots();
+            _inventory.TryAddItemToSlot(slots[14], item);
         }
+        
         private void GenerateUIWithMath()
         {
             float slotWidth = _width / _slotsColCount;

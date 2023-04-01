@@ -11,11 +11,6 @@ namespace _survival_game
         [SerializeField] private Food _greenApple;
         [SerializeField] private Food _redApple;
         [SerializeField] private InventoryUI _inventory;
-        
-        private void Start()
-        {
-            
-        }
 
         public void Update()
         {
@@ -28,6 +23,11 @@ namespace _survival_game
             {
                 IInventoryItem item = new InventoryItem(1, _redApple);
                 _inventory.PutItem(item);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                IInventoryItem item = new InventoryItem(1, _redApple);
+                _inventory.PutItemIntoSlot(item);
             }
         }
     }

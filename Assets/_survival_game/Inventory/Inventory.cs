@@ -28,7 +28,7 @@ namespace _survival_game.Inventory
         public bool TryAddItem(IInventoryItem item)
         {
             IInventorySlot slotWithSameItem = _slots.Find(slot => !slot.IsEmpty &&
-                                                                  IsSameItems(slot.Item, item));
+                                                                  IsSameItems(slot.Item, item) && !slot.IsFull);
 
             if (slotWithSameItem != null)
                 return TryAddItemToSlot(slotWithSameItem, item);
@@ -69,7 +69,8 @@ namespace _survival_game.Inventory
         public void TransitItemInOtherSlot(IInventorySlot slotFrom, IInventorySlot slotTo)
         {
             if (slotTo.IsFull || slotFrom.IsEmpty ||
-                (!slotTo.IsEmpty && !IsSameItems(slotTo.Item, slotFrom.Item)))
+                (!slotTo.IsEmpty && !IsSameItems(slotTo.Item, slotFrom.Item)) ||
+                slotFrom == slotTo)
                 return;
             
             if (slotTo.IsEmpty)

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: red_apple
   _title: Red Apple
-  _maxCountsInSlot: 100
+  _maxCountsInSlot: 10
   _spriteIcon: {fileID: 21300000, guid: 0154c64c0cd74424d826d1e9a1710acf, type: 3}

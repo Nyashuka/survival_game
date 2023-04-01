@@ -18,18 +18,18 @@ namespace _survival_game.Inventory.InventoryUI
         public void OnDrop(PointerEventData eventData)
         {
             InventoryItemUI itemUI = eventData.pointerDrag.GetComponent<InventoryItemUI>();
-            InventorySlotUI slotFrom = itemUI.GetComponentInParent<InventorySlotUI>();
+            InventorySlotUI slotFrom = itemUI.SlotUI;
             
             ItemDropped?.Invoke(slotFrom.Slot, Slot);
             
-            UpdateData();
-            slotFrom.UpdateData();
+            /*UpdateData();
+            slotFrom.UpdateData();*/
         }
 
         public void UpdateData()
         {
             if (Slot != null)
-                _itemUI.SetItem(Slot);
+                _itemUI.SetItem(this);
         }
     }
 }
