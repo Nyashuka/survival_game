@@ -273,9 +273,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c41420315334f3dae36c9ed63533e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _greenApple: {fileID: 11400000, guid: b1ab7829e2f87e14b94f1e8c91b46a2a, type: 2}
-  _redApple: {fileID: 11400000, guid: 5c53d5f6b1fa59e47a0c08a82d5ffb31, type: 2}
-  _inventory: {fileID: 413241624}
+  test:
+    a: 0
+    b: 0
+  greenApple: {fileID: 11400000, guid: b1ab7829e2f87e14b94f1e8c91b46a2a, type: 2}
+  redApple: {fileID: 11400000, guid: 5c53d5f6b1fa59e47a0c08a82d5ffb31, type: 2}
+  inventory: {fileID: 413241624}
 --- !u!4 &534678752
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using _survival_game.Inventory.Scripts.Interfaces;
 
-namespace _survival_game.Inventory
+namespace _survival_game.Inventory.Scripts
 {
     public class Item : IItem
     {
@@ -12,7 +12,8 @@ namespace _survival_game.Inventory
         }
 
         public int Amount => _amount;
-        
+        public int MaxCountInStack => ItemInfo.MaxCountInStack;
+
         public IItemInfo ItemInfo { get; }
 
         public void ChangeAmount(int newAmount)

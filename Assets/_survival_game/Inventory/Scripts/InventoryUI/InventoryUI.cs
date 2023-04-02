@@ -3,7 +3,7 @@ using _survival_game.Inventory.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _survival_game.Inventory.InventoryUI
+namespace _survival_game.Inventory.Scripts.InventoryUI
 {
     [RequireComponent(typeof(GridLayoutGroup))]
     [RequireComponent(typeof(Image))]
@@ -39,8 +39,9 @@ namespace _survival_game.Inventory.InventoryUI
 
             inventoryGrid.spacing = new Vector2(spacing, spacing);
 
-            _height = inventoryPanel.rectTransform.rect.height - padding * 2 - spacing * (slotsRowCount - 1);
-            _width = inventoryPanel.rectTransform.rect.width - padding * 2 - spacing * (slotsColCount - 1);
+            var rect = inventoryPanel.rectTransform.rect;
+            _height = rect.height - padding * 2 - spacing * (slotsRowCount - 1);
+            _width = rect.width - padding * 2 - spacing * (slotsColCount - 1);
         }
 
         private void InitInventory()

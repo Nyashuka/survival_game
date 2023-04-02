@@ -3,7 +3,7 @@ using _survival_game.Inventory.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _survival_game.Inventory.InventoryUI
+namespace _survival_game.Inventory.Scripts.InventoryUI
 {
     public class InventorySlotUI : MonoBehaviour, IDropHandler
     {

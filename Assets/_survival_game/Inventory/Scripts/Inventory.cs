@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using _survival_game.Inventory.Scripts.Interfaces;
 
-namespace _survival_game.Inventory
+namespace _survival_game.Inventory.Scripts
 {
     public class Inventory : IInventory
     { 
@@ -38,7 +38,7 @@ namespace _survival_game.Inventory
 
         public bool TryAddItemToSlot(IInventorySlot slot, IItem item)
         {  
-            if (slot.AmountItems + item.Amount <= item.ItemInfo.MaxCountInStack)
+            if (slot.AmountItems + item.Amount <= item.MaxCountInStack)
             {
                 if (slot.IsEmpty)
                 {
@@ -52,8 +52,8 @@ namespace _survival_game.Inventory
                 return true;
             }
 
-            int amountToAdd = item.ItemInfo.MaxCountInStack - slot.AmountItems;
-            int leftItemsAmount = (slot.AmountItems + item.Amount) - item.ItemInfo.MaxCountInStack;
+            int amountToAdd = item.MaxCountInStack - slot.AmountItems;
+            int leftItemsAmount = (slot.AmountItems + item.Amount) - item.MaxCountInStack;
             
             slot.Item.AddAmount(amountToAdd);
             item.ChangeAmount(leftItemsAmount);
@@ -79,8 +79,8 @@ namespace _survival_game.Inventory
                 return;
             }
             
-            bool fits = slotFrom.AmountItems + slotTo.AmountItems <= slotFrom.Item.ItemInfo.MaxCountInStack;
-            int amountToTransit = fits ? slotFrom.AmountItems : slotFrom.Item.ItemInfo.MaxCountInStack - slotTo.AmountItems;
+            bool fits = slotFrom.AmountItems + slotTo.AmountItems <= slotFrom.MaxCountInStack;
+            int amountToTransit = fits ? slotFrom.AmountItems : slotFrom.MaxCountInStack - slotTo.AmountItems;
             int amountLeft = slotFrom.AmountItems - amountToTransit;
             slotTo.Item.AddAmount(amountToTransit);
             

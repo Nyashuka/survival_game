@@ -4,7 +4,8 @@
     {
         bool IsFull { get; }
         bool IsEmpty { get; }
-        int AmountItems { get; }
+        int AmountItems { get; } 
+        int MaxCountInStack { get; }
         IItem Item { get; }
         void Clear();
         void SetItem(IItem item);

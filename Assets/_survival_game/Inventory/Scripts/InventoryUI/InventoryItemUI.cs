@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace _survival_game.Inventory.InventoryUI
+namespace _survival_game.Inventory.Scripts.InventoryUI
 {
     public class InventoryItemUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
